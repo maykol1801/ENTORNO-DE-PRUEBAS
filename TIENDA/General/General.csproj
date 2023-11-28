@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DAE1256F-FAFE-472C-B2A0-979B51ABD232}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>General</RootNamespace>
+    <AssemblyName>General</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CLS\Area.cs" />
+    <Compile Include="CLS\Cliente.cs" />
+    <Compile Include="CLS\Departamento.cs" />
+    <Compile Include="CLS\Detalle_factura.cs" />
+    <Compile Include="CLS\Detalle_pedido.cs" />
+    <Compile Include="CLS\Direccion.cs" />
+    <Compile Include="CLS\Empleado.cs" />
+    <Compile Include="CLS\Factura.cs" />
+    <Compile Include="CLS\Municipio.cs" />
+    <Compile Include="CLS\opciones.cs" />
+    <Compile Include="CLS\Pedido_proveedor.cs" />
+    <Compile Include="CLS\Producto.cs" />
+    <Compile Include="CLS\Proveedor.cs" />
+    <Compile Include="CLS\Roles.cs" />
+    <Compile Include="CLS\subopciones.cs" />
+    <Compile Include="CLS\Ticket.cs" />
+    <Compile Include="CLS\Tipo_pago.cs" />
+    <Compile Include="CLS\Unidad_medida.cs" />
+    <Compile Include="CLS\Usuario.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AREA\frmEditarArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\AREA\frmEditarArea.Designer.cs">
+      <DependentUpon>frmEditarArea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AREA\frmVisorArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\AREA\frmVisorArea.Designer.cs">
+      <DependentUpon>frmVisorArea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CLIENTES\frmEditarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CLIENTES\frmEditarCliente.Designer.cs">
+      <DependentUpon>frmEditarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CLIENTES\frmVisorCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CLIENTES\frmVisorCliente.Designer.cs">
+      <DependentUpon>frmVisorCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DETALLE_PEDIDO\frmEditarDetallePedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DETALLE_PEDIDO\frmEditarDetallePedido.Designer.cs">
+      <DependentUpon>frmEditarDetallePedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DETALLE_PEDIDO\frmGestionDetallePedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DETALLE_PEDIDO\frmGestionDetallePedido.Designer.cs">
+      <DependentUpon>frmGestionDetallePedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DETALLE_VENTA\frmEditarDetalleVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DETALLE_VENTA\frmEditarDetalleVenta.Designer.cs">
+      <DependentUpon>frmEditarDetalleVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DETALLE_VENTA\frmGestionDetalleVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DETALLE_VENTA\frmGestionDetalleVenta.Designer.cs">
+      <DependentUpon>frmGestionDetalleVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DIRECCION\frmEditarDireccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DIRECCION\frmEditarDireccion.Designer.cs">
+      <DependentUpon>frmEditarDireccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\DIRECCION\frmGestionDireccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\DIRECCION\frmGestionDireccion.Designer.cs">
+      <DependentUpon>frmGestionDireccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\EMPLEADO\frmEditarEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\EMPLEADO\frmEditarEmpleado.Designer.cs">
+      <DependentUpon>frmEditarEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\EMPLEADO\frmVisorEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\EMPLEADO\frmVisorEmpleado.Designer.cs">
+      <DependentUpon>frmVisorEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MUNICIPIO\frmVisorMunicipio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\MUNICIPIO\frmVisorMunicipio.Designer.cs">
+      <DependentUpon>frmVisorMunicipio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PEDIDO_PROVEEDOR\frmCrearPedidoProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PEDIDO_PROVEEDOR\frmCrearPedidoProveedor.Designer.cs">
+      <DependentUpon>frmCrearPedidoProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PEDIDO_PROVEEDOR\frmEditarPedidoProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PEDIDO_PROVEEDOR\frmEditarPedidoProveedor.Designer.cs">
+      <DependentUpon>frmEditarPedidoProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PRODUCTO\frmEditarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PRODUCTO\frmEditarProducto.Designer.cs">
+      <DependentUpon>frmEditarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PRODUCTO\frmGestionProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PRODUCTO\frmGestionProducto.Designer.cs">
+      <DependentUpon>frmGestionProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PRODUCTO\frmVisorProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PRODUCTO\frmVisorProducto.Designer.cs">
+      <DependentUpon>frmVisorProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PROVEEDOR\frmEditarProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PROVEEDOR\frmEditarProveedor.Designer.cs">
+      <DependentUpon>frmEditarProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PROVEEDOR\frmVisorProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PROVEEDOR\frmVisorProveedor.Designer.cs">
+      <DependentUpon>frmVisorProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ROLES\frmVisorRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ROLES\frmVisorRol.Designer.cs">
+      <DependentUpon>frmVisorRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UNIDAD_MEDIDA\frmEditarUnidadMedida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\UNIDAD_MEDIDA\frmEditarUnidadMedida.Designer.cs">
+      <DependentUpon>frmEditarUnidadMedida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UNIDAD_MEDIDA\frmVisorUnidadMedida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\UNIDAD_MEDIDA\frmVisorUnidadMedida.Designer.cs">
+      <DependentUpon>frmVisorUnidadMedida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\USUARIO\frmEditarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\USUARIO\frmEditarUsuario.Designer.cs">
+      <DependentUpon>frmEditarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CLIENTES\frmGestionCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\CLIENTES\frmGestionCliente.Designer.cs">
+      <DependentUpon>frmGestionCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\EMPLEADO\frmGestionEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\EMPLEADO\frmGestionEmpleado.Designer.cs">
+      <DependentUpon>frmGestionEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PEDIDO_PROVEEDOR\frmGestionPedidoProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PEDIDO_PROVEEDOR\frmGestionPedidoProveedor.Designer.cs">
+      <DependentUpon>frmGestionPedidoProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\PROVEEDOR\frmGestionProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PROVEEDOR\frmGestionProveedor.Designer.cs">
+      <DependentUpon>frmGestionProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\USUARIO\frmGestionUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\USUARIO\frmGestionUsuario.Designer.cs">
+      <DependentUpon>frmGestionUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\VENTAS\frmCrearVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\VENTAS\frmCrearVenta.Designer.cs">
+      <DependentUpon>frmCrearVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\VENTAS\frmEditarVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\VENTAS\frmEditarVenta.Designer.cs">
+      <DependentUpon>frmEditarVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\VENTAS\frmGestionVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\VENTAS\frmGestionVenta.Designer.cs">
+      <DependentUpon>frmGestionVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\AREA\frmEditarArea.resx">
+      <DependentUpon>frmEditarArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\AREA\frmVisorArea.resx">
+      <DependentUpon>frmVisorArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CLIENTES\frmEditarCliente.resx">
+      <DependentUpon>frmEditarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CLIENTES\frmVisorCliente.resx">
+      <DependentUpon>frmVisorCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DETALLE_PEDIDO\frmEditarDetallePedido.resx">
+      <DependentUpon>frmEditarDetallePedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DETALLE_PEDIDO\frmGestionDetallePedido.resx">
+      <DependentUpon>frmGestionDetallePedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DETALLE_VENTA\frmEditarDetalleVenta.resx">
+      <DependentUpon>frmEditarDetalleVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DETALLE_VENTA\frmGestionDetalleVenta.resx">
+      <DependentUpon>frmGestionDetalleVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DIRECCION\frmEditarDireccion.resx">
+      <DependentUpon>frmEditarDireccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DIRECCION\frmGestionDireccion.resx">
+      <DependentUpon>frmGestionDireccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\EMPLEADO\frmEditarEmpleado.resx">
+      <DependentUpon>frmEditarEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\EMPLEADO\frmGestionEmpleado.resx">
+      <DependentUpon>frmGestionEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\EMPLEADO\frmVisorEmpleado.resx">
+      <DependentUpon>frmVisorEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\MUNICIPIO\frmVisorMunicipio.resx">
+      <DependentUpon>frmVisorMunicipio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PEDIDO_PROVEEDOR\frmCrearPedidoProveedor.resx">
+      <DependentUpon>frmCrearPedidoProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PEDIDO_PROVEEDOR\frmEditarPedidoProveedor.resx">
+      <DependentUpon>frmEditarPedidoProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PEDIDO_PROVEEDOR\frmGestionPedidoProveedor.resx">
+      <DependentUpon>frmGestionPedidoProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PRODUCTO\frmEditarProducto.resx">
+      <DependentUpon>frmEditarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PRODUCTO\frmGestionProducto.resx">
+      <DependentUpon>frmGestionProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PRODUCTO\frmVisorProducto.resx">
+      <DependentUpon>frmVisorProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PROVEEDOR\frmEditarProveedor.resx">
+      <DependentUpon>frmEditarProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PROVEEDOR\frmGestionProveedor.resx">
+      <DependentUpon>frmGestionProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PROVEEDOR\frmVisorProveedor.resx">
+      <DependentUpon>frmVisorProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ROLES\frmVisorRol.resx">
+      <DependentUpon>frmVisorRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UNIDAD_MEDIDA\frmEditarUnidadMedida.resx">
+      <DependentUpon>frmEditarUnidadMedida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UNIDAD_MEDIDA\frmVisorUnidadMedida.resx">
+      <DependentUpon>frmVisorUnidadMedida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\USUARIO\frmEditarUsuario.resx">
+      <DependentUpon>frmEditarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\CLIENTES\frmGestionCliente.resx">
+      <DependentUpon>frmGestionCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\USUARIO\frmGestionUsuario.resx">
+      <DependentUpon>frmGestionUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\VENTAS\frmCrearVenta.resx">
+      <DependentUpon>frmCrearVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\VENTAS\frmEditarVenta.resx">
+      <DependentUpon>frmEditarVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\VENTAS\frmGestionVenta.resx">
+      <DependentUpon>frmGestionVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataManager\DataManager.csproj">
+      <Project>{6fae3d80-8e7b-426a-8889-95413b9ae960}</Project>
+      <Name>DataManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Reporte\Reporte.csproj">
+      <Project>{DD868887-2157-4A86-877A-CA3A743A276C}</Project>
+      <Name>Reporte</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SessionManager\SessionManager.csproj">
+      <Project>{efec3b14-5996-44eb-bd10-c8737bfd413e}</Project>
+      <Name>SessionManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

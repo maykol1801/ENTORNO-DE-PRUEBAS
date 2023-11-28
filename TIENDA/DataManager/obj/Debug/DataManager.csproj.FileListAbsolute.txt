@@ -1,0 +1,18 @@
+C:\Users\davp9\OneDrive\Escritorio\TiendaProyecto\TIENDA\DataManager\bin\Debug\DataManager.dll
+C:\Users\davp9\OneDrive\Escritorio\TiendaProyecto\TIENDA\DataManager\bin\Debug\DataManager.pdb
+C:\Users\davp9\OneDrive\Escritorio\TiendaProyecto\TIENDA\DataManager\bin\Debug\System.Data.Common.dll
+C:\Users\davp9\OneDrive\Escritorio\TiendaProyecto\TIENDA\DataManager\bin\Debug\System.Data.SqlClient.dll
+C:\Users\davp9\OneDrive\Escritorio\TiendaProyecto\TIENDA\DataManager\obj\Debug\DataManager.csproj.AssemblyReference.cache
+C:\Users\davp9\OneDrive\Escritorio\TiendaProyecto\TIENDA\DataManager\obj\Debug\DataManager.csproj.CoreCompileInputs.cache
+C:\Users\davp9\OneDrive\Escritorio\TiendaProyecto\TIENDA\DataManager\obj\Debug\DataManager.csproj.CopyComplete
+C:\Users\davp9\OneDrive\Escritorio\TiendaProyecto\TIENDA\DataManager\obj\Debug\DataManager.dll
+C:\Users\davp9\OneDrive\Escritorio\TiendaProyecto\TIENDA\DataManager\obj\Debug\DataManager.pdb
+C:\Users\Mahico\Documents\ENTORNO DE PRUEBAS\TIENDA\DataManager\bin\Debug\DataManager.dll
+C:\Users\Mahico\Documents\ENTORNO DE PRUEBAS\TIENDA\DataManager\bin\Debug\DataManager.pdb
+C:\Users\Mahico\Documents\ENTORNO DE PRUEBAS\TIENDA\DataManager\bin\Debug\System.Data.Common.dll
+C:\Users\Mahico\Documents\ENTORNO DE PRUEBAS\TIENDA\DataManager\bin\Debug\System.Data.SqlClient.dll
+C:\Users\Mahico\Documents\ENTORNO DE PRUEBAS\TIENDA\DataManager\obj\Debug\DataManager.csproj.AssemblyReference.cache
+C:\Users\Mahico\Documents\ENTORNO DE PRUEBAS\TIENDA\DataManager\obj\Debug\DataManager.csproj.CoreCompileInputs.cache
+C:\Users\Mahico\Documents\ENTORNO DE PRUEBAS\TIENDA\DataManager\obj\Debug\DataManager.csproj.CopyComplete
+C:\Users\Mahico\Documents\ENTORNO DE PRUEBAS\TIENDA\DataManager\obj\Debug\DataManager.dll
+C:\Users\Mahico\Documents\ENTORNO DE PRUEBAS\TIENDA\DataManager\obj\Debug\DataManager.pdb
