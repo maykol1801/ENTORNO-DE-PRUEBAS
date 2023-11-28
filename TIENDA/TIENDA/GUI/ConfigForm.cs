@@ -107,6 +107,19 @@ namespace TIENDA.GUI
             }
         }
 
+        private void MostrarImagenDesdeConfiguracion()
+        {
+            // Mostrar la imagen si la ruta de la imagen no está vacía
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.RutaImagenEmpresa))
+            {
+                MostrarImagen(Properties.Settings.Default.RutaImagenEmpresa);
+            }
+            else
+            {
+                // Si la ruta de la imagen está vacía, puedes restablecer el PictureBox
+                pictureBoxEmpresa.Image = null;
+            }
+        }
 
 
 
@@ -179,26 +192,14 @@ namespace TIENDA.GUI
             txtDireccion.Text = Properties.Settings.Default.DireccionEmpresa;
             txtTelefono.Text = Properties.Settings.Default.TelefonoEmpresa;
 
-            // Mostrar la imagen si la ruta de la imagen no está vacía
-            if (!string.IsNullOrEmpty(Properties.Settings.Default.RutaImagenEmpresa))
-            {
-                MostrarImagen(Properties.Settings.Default.RutaImagenEmpresa);
-            }
-            else
-            {
-                // Si la ruta de la imagen está vacía, puedes restablecer el PictureBox
-                pictureBoxEmpresa.Image = null;
-            }
+            // Mostrar la imagen desde la configuración
+            MostrarImagenDesdeConfiguracion();
 
             Debug.WriteLine("Controles actualizados.");
             Debug.WriteLine($"Nombre después de actualizar controles: {txtNombre.Text}");
             Debug.WriteLine($"Dirección después de actualizar controles: {txtDireccion.Text}");
             Debug.WriteLine($"Teléfono después de actualizar controles: {txtTelefono.Text}");
-
         }
-
-
-
 
 
         private void MostrarImagen(string rutaImagen)
