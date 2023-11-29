@@ -27,6 +27,7 @@ namespace TIENDA.GUI
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigForm));
@@ -42,6 +43,7 @@ namespace TIENDA.GUI
             this.label3 = new System.Windows.Forms.Label();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmpresa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSalir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnGuardar)).BeginInit();
@@ -60,8 +62,9 @@ namespace TIENDA.GUI
             // 
             // pictureBoxEmpresa
             // 
+            this.pictureBoxEmpresa.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBoxEmpresa.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxEmpresa.Image")));
-            this.pictureBoxEmpresa.Location = new System.Drawing.Point(140, 320);
+            this.pictureBoxEmpresa.Location = new System.Drawing.Point(408, 131);
             this.pictureBoxEmpresa.Name = "pictureBoxEmpresa";
             this.pictureBoxEmpresa.Size = new System.Drawing.Size(90, 87);
             this.pictureBoxEmpresa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -70,7 +73,7 @@ namespace TIENDA.GUI
             // 
             // btnCargarImagen
             // 
-            this.btnCargarImagen.Location = new System.Drawing.Point(112, 413);
+            this.btnCargarImagen.Location = new System.Drawing.Point(111, 341);
             this.btnCargarImagen.Name = "btnCargarImagen";
             this.btnCargarImagen.Size = new System.Drawing.Size(140, 20);
             this.btnCargarImagen.TabIndex = 18;
@@ -112,8 +115,8 @@ namespace TIENDA.GUI
             this.txtNombre.Size = new System.Drawing.Size(250, 20);
             this.txtNombre.TabIndex = 28;
             this.txtNombre.Text = "Ejemplo: Exydos Company";
-            this.txtNombre.MouseEnter += new System.EventHandler(this.txtNombre_MouseEnter);
-            this.txtNombre.MouseLeave += new System.EventHandler(this.txtNombre_MouseLeave);
+            this.txtNombre.Enter += new System.EventHandler(this.txtNombre_Enter);
+            this.txtNombre.Leave += new System.EventHandler(this.txtNombre_Leave);
             // 
             // label1
             // 
@@ -149,8 +152,8 @@ namespace TIENDA.GUI
             this.txtDireccion.Size = new System.Drawing.Size(250, 20);
             this.txtDireccion.TabIndex = 30;
             this.txtDireccion.Text = "Ejemplo: 501 W Dallas, TX, 503";
-            this.txtDireccion.MouseEnter += new System.EventHandler(this.txtDireccion_MouseEnter);
-            this.txtDireccion.MouseLeave += new System.EventHandler(this.txtDireccion_MouseLeave);
+            this.txtDireccion.Enter += new System.EventHandler(this.txtDireccion_Enter);
+            this.txtDireccion.Leave += new System.EventHandler(this.txtDireccion_Leave);
             // 
             // label3
             // 
@@ -173,8 +176,10 @@ namespace TIENDA.GUI
             this.txtTelefono.Size = new System.Drawing.Size(250, 20);
             this.txtTelefono.TabIndex = 32;
             this.txtTelefono.Text = "Ejemplo: +1 888-751-9752";
-            this.txtTelefono.MouseEnter += new System.EventHandler(this.txtTelefono_MouseEnter);
-            this.txtTelefono.MouseLeave += new System.EventHandler(this.txtTelefono_MouseLeave);
+            this.txtTelefono.Enter += new System.EventHandler(this.txtTelefono_Enter);
+            this.txtTelefono.Leave += new System.EventHandler(this.txtTelefono_Leave);
+            this.txtTelefono.MouseEnter += new System.EventHandler(this.txtTelefono_Enter);
+            this.txtTelefono.MouseLeave += new System.EventHandler(this.txtTelefono_Leave);
             // 
             // label4
             // 
@@ -189,11 +194,23 @@ namespace TIENDA.GUI
             this.label4.Text = "4. Asigne el logo de su empresa (esta imagen se usara para generar los reportes)";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
+            // label5
+            // 
+            this.label5.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(380, 102);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(164, 26);
+            this.label5.TabIndex = 35;
+            this.label5.Text = "Tu imagen aparecera aca:";
+            // 
             // ConfigForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(556, 445);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtTelefono);
@@ -232,5 +249,6 @@ namespace TIENDA.GUI
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }

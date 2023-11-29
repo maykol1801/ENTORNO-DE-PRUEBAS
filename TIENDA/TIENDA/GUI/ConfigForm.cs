@@ -1,21 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 using DataManager;
-using System.Data.SqlClient;
-using System.IO;
-using System.Diagnostics;
 
 namespace TIENDA.GUI
 {
     public partial class ConfigForm : Form
     {
+        private readonly string nombreEmpresaDefault = "Ejemplo: Exydos Company";
+        private readonly string direccionDefault = "Ejemplo: 501 W Dallas, TX, 503";
+        private readonly string telefonoDefault = "Ejemplo: +1 888-751-9752";
+        private readonly Color colorDefault = Color.Gray;
+
         private readonly DBConexion dbConexion = new DBConexion();
 
         public ConfigForm()
@@ -26,12 +26,6 @@ namespace TIENDA.GUI
         private void ConfigForm_Load(object sender, EventArgs e)
         {
             Debug.WriteLine("Formulario de configuración cargado");
-
-            // Si no hay configuración en la base de datos, establecer la configuración predeterminada
-            if (!ConfiguracionEnBaseDeDatosExiste())
-            {
-                EstablecerConfiguracionPredeterminada();
-            }
 
             // Cargar la configuración desde la base de datos al cargar el formulario
             CargarConfiguracionDesdeBD();
@@ -44,39 +38,32 @@ namespace TIENDA.GUI
             Debug.WriteLine($"Teléfono después de actualizar controles: {Properties.Settings.Default.TelefonoEmpresa}");
         }
 
-
         private void CargarConfiguracionDesdeBD()
         {
             if (dbConexion.Conectar())
             {
                 try
                 {
-                    using (SqlCommand command = new SqlCommand("SELECT * FROM empresa", dbConexion.ObtenerConexion()))
+                    using (SqlCommand command = new SqlCommand("ObtenerConfiguracionEmpresa", dbConexion.ObtenerConexion()))
                     {
+                        command.CommandType = CommandType.StoredProcedure;
+
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.Read())
                             {
-                                // Leer valores directamente desde la base de datos sin asignar a propiedades
                                 string nombreEmpresa = Convert.ToString(reader["NombreEmpresa"]);
                                 string direccionEmpresa = Convert.ToString(reader["DireccionEmpresa"]);
                                 string telefonoEmpresa = Convert.ToString(reader["TelefonoEmpresa"]);
                                 string rutaImagenEmpresa = Convert.ToString(reader["RutaImagenEmpresa"]);
 
-                                // Verificar si la ruta de la imagen está vacía antes de cargarla
                                 Debug.WriteLine($"Ruta de la imagen cargada desde la base de datos: {rutaImagenEmpresa}");
 
-                                // Asignar siempre la ruta de la imagen, incluso si está vacía
                                 Properties.Settings.Default.RutaImagenEmpresa = rutaImagenEmpresa;
 
-                                // Verificar si los valores leídos son diferentes de los predeterminados
-                                if (nombreEmpresa != "EXYDOS" || direccionEmpresa != "xxxx,xxxx, El salvador" || telefonoEmpresa != "xxxx-xxxx")
-                                {
-                                    // Asignar los valores solo si son diferentes de los predeterminados
-                                    Properties.Settings.Default.NombreEmpresa = nombreEmpresa;
-                                    Properties.Settings.Default.DireccionEmpresa = direccionEmpresa;
-                                    Properties.Settings.Default.TelefonoEmpresa = telefonoEmpresa;
-                                }
+                                Properties.Settings.Default.NombreEmpresa = nombreEmpresa;
+                                Properties.Settings.Default.DireccionEmpresa = direccionEmpresa;
+                                Properties.Settings.Default.TelefonoEmpresa = telefonoEmpresa;
 
                                 Properties.Settings.Default.Save();
 
@@ -121,8 +108,6 @@ namespace TIENDA.GUI
             }
         }
 
-
-
         private bool ConfiguracionEnBaseDeDatosExiste()
         {
             if (dbConexion.Conectar())
@@ -153,37 +138,11 @@ namespace TIENDA.GUI
             }
         }
 
-
-
-        private bool ConfiguracionPredeterminadaPresente()
-        {
-            return Properties.Settings.Default.NombreEmpresa == "EXYDOS" &&
-                   Properties.Settings.Default.DireccionEmpresa == "xxxx,xxxx, El salvador" &&
-                   Properties.Settings.Default.TelefonoEmpresa == "xxxx-xxxx";
-
-            
-        }
-    
-
-
-
         private bool ConfiguracionModificada()
         {
             // Verificar si la configuración ha sido modificada
             return !string.IsNullOrEmpty(Properties.Settings.Default.NombreEmpresa);
         }
-
-        private void EstablecerConfiguracionPredeterminada()
-        {
-            // Establecer valores predeterminados si la configuración no ha sido modificada
-            Properties.Settings.Default.NombreEmpresa = "EXYDOS";
-            Properties.Settings.Default.DireccionEmpresa = "xxxx,xxxx, El salvador";
-            Properties.Settings.Default.TelefonoEmpresa = "xxxx-xxxx";
-            Properties.Settings.Default.Save();
-        }
-
-
-
 
         private void ActualizarControles()
         {
@@ -200,7 +159,6 @@ namespace TIENDA.GUI
             Debug.WriteLine($"Dirección después de actualizar controles: {txtDireccion.Text}");
             Debug.WriteLine($"Teléfono después de actualizar controles: {txtTelefono.Text}");
         }
-
 
         private void MostrarImagen(string rutaImagen)
         {
@@ -234,9 +192,6 @@ namespace TIENDA.GUI
             }
         }
 
-
-
-
         private void btnCargarImagen_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -265,7 +220,6 @@ namespace TIENDA.GUI
                 }
             }
         }
-
 
         private void GuardarConfiguracionEnBD(string nombreEmpresa, string direccionEmpresa, string telefonoEmpresa, string rutaImagenEmpresa)
         {
@@ -320,8 +274,6 @@ namespace TIENDA.GUI
             Console.WriteLine("Configuración guardada en la base de datos.");
         }
 
-
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             // Guardar los valores ingresados por el usuario en la configuración
@@ -343,8 +295,6 @@ namespace TIENDA.GUI
             this.Close();
         }
 
-
-
         private void label4_Click(object sender, EventArgs e)
         {
 
@@ -355,61 +305,51 @@ namespace TIENDA.GUI
             this.Close();
         }
 
-        private void txtNombre_MouseEnter(object sender, EventArgs e)
+        private void txtNombre_Enter(object sender, EventArgs e)
         {
-            // Cambia el texto y color del texto cuando el usuario hace clic en el TextBox
-            if (txtNombre.Text == "Ejemplo: Exydos Company")
+            TextBox_Enter(txtNombre, nombreEmpresaDefault);
+        }
+
+        private void txtNombre_Leave(object sender, EventArgs e)
+        {
+            TextBox_Leave(txtNombre, nombreEmpresaDefault);
+        }
+
+        private void txtDireccion_Enter(object sender, EventArgs e)
+        {
+            TextBox_Enter(txtDireccion, direccionDefault);
+        }
+
+        private void txtDireccion_Leave(object sender, EventArgs e)
+        {
+            TextBox_Leave(txtDireccion, direccionDefault);
+        }
+
+        private void txtTelefono_Enter(object sender, EventArgs e)
+        {
+            TextBox_Enter(txtTelefono, telefonoDefault);
+        }
+
+        private void txtTelefono_Leave(object sender, EventArgs e)
+        {
+            TextBox_Leave(txtTelefono, telefonoDefault);
+        }
+
+        private void TextBox_Enter(TextBox textBox, string valorDefault)
+        {
+            if (textBox.Text == valorDefault)
             {
-                txtNombre.Text = "";
-                txtNombre.ForeColor = Color.Black; // Cambia el color del texto a negro
+                textBox.Text = "";
+                textBox.ForeColor = Color.Black;
             }
         }
 
-        private void txtNombre_MouseLeave(object sender, EventArgs e)
+        private void TextBox_Leave(TextBox textBox, string valorDefault)
         {
-            // Restaura el texto y color del texto si el usuario no ingresó nada
-            if (string.IsNullOrWhiteSpace(txtNombre.Text))
+            if (string.IsNullOrWhiteSpace(textBox.Text))
             {
-                txtNombre.Text = "Ejemplo: Exydos Company";
-                txtNombre.ForeColor = Color.Gray; // Cambia el color del texto a gris
-            }
-        }
-
-        private void txtDireccion_MouseEnter(object sender, EventArgs e)
-        {
-            if (txtDireccion.Text == "Ejemplo: 501 W Dallas, TX, 503")
-            {
-                txtDireccion.Text = "";
-                txtDireccion.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtDireccion_MouseLeave(object sender, EventArgs e)
-        {
-            // Restaura el texto y color del texto si el usuario no ingresó nada
-            if (string.IsNullOrWhiteSpace(txtDireccion.Text))
-            {
-                txtDireccion.Text = "Ejemplo: 501 W Dallas, TX, 503";
-                txtDireccion.ForeColor = Color.Gray;
-            }
-        }
-
-        private void txtTelefono_MouseEnter(object sender, EventArgs e)
-        {
-            if (txtTelefono.Text == "Ejemplo: +1 888-751-9752")
-            {
-                txtTelefono.Text = "";
-                txtTelefono.ForeColor = Color.Black;
-            }
-        }
-
-        private void txtTelefono_MouseLeave(object sender, EventArgs e)
-        {
-            // Restaura el texto y color del texto si el usuario no ingresó nada
-            if (string.IsNullOrWhiteSpace(txtTelefono.Text))
-            {
-                txtTelefono.Text = "Ejemplo: +1 888-751-9752";
-                txtTelefono.ForeColor = Color.Gray;
+                textBox.Text = valorDefault;
+                textBox.ForeColor = colorDefault;
             }
         }
     }
