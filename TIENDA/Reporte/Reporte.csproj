@@ -64,6 +64,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Empleados.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DAT\Empresa.cs">
+      <DependentUpon>Empresa.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAT\Empresa.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Empresa.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DAT\Productos.cs">
       <DependentUpon>Productos.xsd</DependentUpon>
     </Compile>
@@ -230,6 +238,17 @@
     </None>
     <None Include="DAT\Empleados.xss">
       <DependentUpon>Empleados.xsd</DependentUpon>
+    </None>
+    <None Include="DAT\Empresa.xsc">
+      <DependentUpon>Empresa.xsd</DependentUpon>
+    </None>
+    <None Include="DAT\Empresa.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Empresa.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DAT\Empresa.xss">
+      <DependentUpon>Empresa.xsd</DependentUpon>
     </None>
     <None Include="DAT\Productos.xsc">
       <DependentUpon>Productos.xsd</DependentUpon>
