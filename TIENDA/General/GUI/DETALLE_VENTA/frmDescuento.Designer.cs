@@ -51,8 +51,9 @@ namespace General.GUI.DETALLE_VENTA
             this.panel3.Location = new System.Drawing.Point(-79, 2);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(724, 78);
+            this.panel3.Size = new System.Drawing.Size(649, 78);
             this.panel3.TabIndex = 23;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // panel1
             // 
@@ -73,7 +74,7 @@ namespace General.GUI.DETALLE_VENTA
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(31, 86);
+            this.label1.Location = new System.Drawing.Point(39, 99);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(192, 13);
             this.label1.TabIndex = 44;
@@ -83,7 +84,7 @@ namespace General.GUI.DETALLE_VENTA
             // 
             this.txtRazon.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtRazon.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRazon.Location = new System.Drawing.Point(34, 102);
+            this.txtRazon.Location = new System.Drawing.Point(42, 115);
             this.txtRazon.Multiline = true;
             this.txtRazon.Name = "txtRazon";
             this.txtRazon.Size = new System.Drawing.Size(371, 121);
@@ -117,7 +118,7 @@ namespace General.GUI.DETALLE_VENTA
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(31, 25);
+            this.label2.Location = new System.Drawing.Point(39, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(182, 13);
             this.label2.TabIndex = 9;
@@ -126,7 +127,7 @@ namespace General.GUI.DETALLE_VENTA
             // numDescuento
             // 
             this.numDescuento.DecimalPlaces = 2;
-            this.numDescuento.Location = new System.Drawing.Point(218, 23);
+            this.numDescuento.Location = new System.Drawing.Point(226, 36);
             this.numDescuento.Margin = new System.Windows.Forms.Padding(2);
             this.numDescuento.Name = "numDescuento";
             this.numDescuento.Size = new System.Drawing.Size(90, 20);
@@ -137,11 +138,12 @@ namespace General.GUI.DETALLE_VENTA
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(566, 426);
+            this.ClientSize = new System.Drawing.Size(565, 439);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmDescuento";
-            this.Text = "frmDescuento";
+            this.Text = "Agregar Descuento";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSalir)).EndInit();

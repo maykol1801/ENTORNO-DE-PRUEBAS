@@ -46,14 +46,14 @@ namespace General.GUI
             this.lblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblRol = new System.Windows.Forms.ToolStripStatusLabel();
             this.id_factura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Razon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numero_documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.monto_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantidad_productos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.monto_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Razon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cambio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipo_pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreCompleto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,7 +73,7 @@ namespace General.GUI
             this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel3.Location = new System.Drawing.Point(2, 2);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(858, 54);
             this.panel3.TabIndex = 12;
@@ -102,7 +102,7 @@ namespace General.GUI
             "A - Z",
             "Z - A"});
             this.cbbOrdenar.Location = new System.Drawing.Point(668, 16);
-            this.cbbOrdenar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbbOrdenar.Margin = new System.Windows.Forms.Padding(2);
             this.cbbOrdenar.Name = "cbbOrdenar";
             this.cbbOrdenar.Size = new System.Drawing.Size(92, 21);
             this.cbbOrdenar.TabIndex = 14;
@@ -128,14 +128,14 @@ namespace General.GUI
             this.dtgfactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgfactura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_factura,
-            this.Descuento,
-            this.Razon,
             this.numero_documento,
             this.fecha,
             this.descripcion,
             this.monto_total,
             this.cantidad_productos,
             this.monto_cliente,
+            this.Descuento,
+            this.Razon,
             this.Cambio,
             this.tipo_pago,
             this.NombreCompleto,
@@ -266,20 +266,6 @@ namespace General.GUI
             this.id_factura.ReadOnly = true;
             this.id_factura.Width = 175;
             // 
-            // Descuento
-            // 
-            this.Descuento.DataPropertyName = "descuento_monto";
-            this.Descuento.HeaderText = "Descuento";
-            this.Descuento.Name = "Descuento";
-            this.Descuento.ReadOnly = true;
-            // 
-            // Razon
-            // 
-            this.Razon.DataPropertyName = "descuento_razon";
-            this.Razon.HeaderText = "Razon";
-            this.Razon.Name = "Razon";
-            this.Razon.ReadOnly = true;
-            // 
             // numero_documento
             // 
             this.numero_documento.DataPropertyName = "numero_documento";
@@ -334,6 +320,20 @@ namespace General.GUI
             this.monto_cliente.ReadOnly = true;
             this.monto_cliente.Width = 125;
             // 
+            // Descuento
+            // 
+            this.Descuento.DataPropertyName = "descuento_monto";
+            this.Descuento.HeaderText = "Descuento";
+            this.Descuento.Name = "Descuento";
+            this.Descuento.ReadOnly = true;
+            // 
+            // Razon
+            // 
+            this.Razon.DataPropertyName = "descuento_razon";
+            this.Razon.HeaderText = "Razon";
+            this.Razon.Name = "Razon";
+            this.Razon.ReadOnly = true;
+            // 
             // Cambio
             // 
             this.Cambio.DataPropertyName = "cambio";
@@ -381,7 +381,7 @@ namespace General.GUI
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmGestionVenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion Ventas";
@@ -419,14 +419,14 @@ namespace General.GUI
         private System.Windows.Forms.ToolStripStatusLabel lblRol;
         private System.Windows.Forms.PictureBox frmCrearReporte;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_factura;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descuento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Razon;
         private System.Windows.Forms.DataGridViewTextBoxColumn numero_documento;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn monto_total;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidad_productos;
         private System.Windows.Forms.DataGridViewTextBoxColumn monto_cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descuento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Razon;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cambio;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo_pago;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreCompleto;

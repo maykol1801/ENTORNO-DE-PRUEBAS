@@ -164,19 +164,23 @@ namespace General.GUI.DETALLE_VENTA
             aplicarDescuento = true;
 
             // Crear el formulario de descuento
-            frmDescuento formularioDescuento = new frmDescuento();
-
-            // Mostrar el formulario de descuento como un cuadro de diálogo
-            DialogResult result = formularioDescuento.ShowDialog(this);
-
-            // Verificar si el formulario de descuento se cerró con OK
-            if (result == DialogResult.OK)
+            using (var formularioDescuento = new frmDescuento())
             {
-                // Actualizar la variable cantidadDescuento en el formulario principal
-                cantidadDescuento = formularioDescuento.CantidadDescuento;
+                // Mostrar el formulario de descuento como un cuadro de diálogo
+                DialogResult result = formularioDescuento.ShowDialog(this);
 
-                // Volver a calcular el total con el descuento
-                calcularTotal();
+                // Verificar si el formulario de descuento se cerró con OK
+                if (result == DialogResult.OK)
+                {
+                    // Actualizar la variable cantidadDescuento en el formulario principal
+                    cantidadDescuento = formularioDescuento.CantidadDescuento;
+
+                    // Actualizar la variable razonDescuento en el formulario principal
+                    razonDescuento = formularioDescuento.RazonDescuento;
+
+                    // Volver a calcular el total con el descuento
+                    calcularTotal();
+                }
             }
         }
 
@@ -241,8 +245,6 @@ namespace General.GUI.DETALLE_VENTA
                 MessageBox.Show($"Error al calcular el total: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
 
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
@@ -313,9 +315,11 @@ namespace General.GUI.DETALLE_VENTA
             decimal totalpagar = Convert.ToDecimal(txtTotalPagar.Text);
             decimal montocliente = Convert.ToDecimal(txtPagoCliente.Text);
             decimal cambio = Convert.ToDecimal(txtCambio.Text);
-            //Creacion del objeto entidad
+
+            // Crear objeto entidad Factura
             CLS.Factura fac = new CLS.Factura();
-            //Sincronizar la entidad con la interfaz
+
+            // Sincronizar la entidad con la interfaz
             fac.NumeroDocumento = numdoc.ToString();
             fac.Descripcion = "gracias por preferirnos";
             fac.Fecha = fecha.ToString();
@@ -323,8 +327,9 @@ namespace General.GUI.DETALLE_VENTA
             fac.CantidadProductos = txtTotalProductos.Text;
             fac.MontoCliente = montocliente.ToString("0.00");
             fac.Cambio = cambio.ToString("0.00");
-            fac.IdTipoPago = Convert.ToString(Convert.ToInt32(cbbPagos.SelectedIndex.ToString())+1);
+            fac.IdTipoPago = Convert.ToString(Convert.ToInt32(cbbPagos.SelectedIndex.ToString()) + 1);
             fac.IdEmpleado = Session.Instancia.id_empleado.ToString();
+
             if (txtIdCliente.Text.Length > 0)
             {
                 fac.IdCliente = txtIdCliente.Text;
@@ -333,10 +338,21 @@ namespace General.GUI.DETALLE_VENTA
             {
                 fac.IdCliente = "NULL";
             }
-            //Realizar la operacion de insertar factura
+
+            decimal descuentoMonto = cantidadDescuento;
+            string descuentoRazon = razonDescuento;
+
+            Console.WriteLine("DescuentoRazon: " + descuentoRazon);
+
+            // Asignar datos de descuento a la entidad Factura
+            fac.DescuentoMonto = descuentoMonto.ToString("0.00");
+            fac.DescuentoRazon = descuentoRazon;
+
+            // Realizar la operacion de insertar factura
             if (fac.Insertar())
             {
                 int rowIndex = 0;
+
                 while (rowIndex < dtgVenta.Rows.Count && dtgVenta.Rows[rowIndex].Cells[0].Value != null)
                 {
                     DataGridViewRow fila = dtgVenta.Rows[rowIndex];
@@ -350,11 +366,13 @@ namespace General.GUI.DETALLE_VENTA
                     factura.Cantidad = fila.Cells["cantidad"].Value.ToString();
                     factura.IdProducto = fila.Cells["id_producto"].Value.ToString();
                     factura.Estado = estado.ToString();
+
                     // Asigna los valores de las demás propiedades según las columnas del DataGridView
                     factura.Insertar();
 
                     rowIndex++;
                 }
+
                 Reporte.GUI.visorFactura f = new Reporte.GUI.visorFactura();
                 this.Close();
                 f.ShowDialog();
@@ -363,8 +381,8 @@ namespace General.GUI.DETALLE_VENTA
             {
                 MessageBox.Show("¡El registro no fue insertado!", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
+
 
         private void panel3_Paint(object sender, PaintEventArgs e)
         {

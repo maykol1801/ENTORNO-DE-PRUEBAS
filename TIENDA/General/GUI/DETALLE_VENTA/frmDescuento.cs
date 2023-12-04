@@ -39,8 +39,17 @@ namespace General.GUI.DETALLE_VENTA
             CantidadDescuento = numDescuento.Value; // Obtener el valor del NumericUpDown
             RazonDescuento = txtRazon.Text;
 
+            // Mensajes de depuración
+            Console.WriteLine("CantidadDescuento: " + CantidadDescuento);
+            Console.WriteLine("RazonDescuento: " + RazonDescuento);
+
             DialogResult = DialogResult.OK; // Cambiar DialogResult a OK cuando se guarda el descuento
             this.Close();
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
