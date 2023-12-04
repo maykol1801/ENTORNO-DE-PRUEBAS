@@ -199,3 +199,4 @@ C:\Users\Max\Documents\ENTORNO-DE-PRUEBAS\TIENDA\General\obj\Debug\General.cspro
 C:\Users\Max\Documents\ENTORNO-DE-PRUEBAS\TIENDA\General\obj\Debug\General.csproj.CopyComplete
 C:\Users\Max\Documents\ENTORNO-DE-PRUEBAS\TIENDA\General\obj\Debug\General.exe
 C:\Users\Max\Documents\ENTORNO-DE-PRUEBAS\TIENDA\General\obj\Debug\General.pdb
+C:\Users\Max\Documents\ENTORNO-DE-PRUEBAS\TIENDA\General\obj\Debug\General.GUI.DETALLE_VENTA.frmDescuento.resources

@@ -16,6 +16,10 @@ namespace General.GUI.DETALLE_VENTA
     {
         private static CLS.Producto _producto = null;
         private static CLS.Cliente _cliente = null;
+        private decimal cantidadDescuento = 0;
+        private string razonDescuento = string.Empty;
+        private bool aplicarDescuento = false;
+
         private void CargarTipoPagos()
         {
             DataTable pagos = new DataTable();
@@ -153,18 +157,30 @@ namespace General.GUI.DETALLE_VENTA
             limpiar();
             calcularTotalProductos();
         }
-        private void calcularTotal()
+
+        private void btnDescuento_Click(object sender, EventArgs e)
         {
-            decimal total = 0;
-            if (dtgVenta.Rows.Count > 0)
+            // Establecer aplicarDescuento en true
+            aplicarDescuento = true;
+
+            // Crear el formulario de descuento
+            frmDescuento formularioDescuento = new frmDescuento();
+
+            // Mostrar el formulario de descuento como un cuadro de diálogo
+            DialogResult result = formularioDescuento.ShowDialog(this);
+
+            // Verificar si el formulario de descuento se cerró con OK
+            if (result == DialogResult.OK)
             {
-                foreach (DataGridViewRow row in dtgVenta.Rows)
-                {
-                    total += Convert.ToDecimal(Convert.ToDecimal(row.Cells["precio_venta"].Value.ToString())*Convert.ToInt32(row.Cells["cantidad"].Value.ToString()));
-                }
+                // Actualizar la variable cantidadDescuento en el formulario principal
+                cantidadDescuento = formularioDescuento.CantidadDescuento;
+
+                // Volver a calcular el total con el descuento
+                calcularTotal();
             }
-            txtTotalPagar.Text = total.ToString("0.00");
         }
+
+
         private void calcularTotalProductos()
         {
             int total = 0;
@@ -172,11 +188,62 @@ namespace General.GUI.DETALLE_VENTA
             {
                 foreach (DataGridViewRow row in dtgVenta.Rows)
                 {
-                    total += Convert.ToInt32(row.Cells["cantidad"].Value.ToString());
+                    // Verificar si la celda tiene un valor antes de intentar convertirlo
+                    if (row.Cells["cantidad"].Value != null)
+                    {
+                        int cantidad;
+                        if (int.TryParse(row.Cells["cantidad"].Value.ToString(), out cantidad))
+                        {
+                            total += cantidad;
+                        }
+                    }
                 }
             }
             txtTotalProductos.Text = total.ToString();
         }
+
+        private void calcularTotal()
+        {
+            try
+            {
+                decimal total = 0;
+
+                // Calcular el total de los productos
+                if (dtgVenta.Rows.Count > 0)
+                {
+                    foreach (DataGridViewRow row in dtgVenta.Rows)
+                    {
+                        // Verificar si las celdas tienen valores y son numéricos antes de operar
+                        if (row.Cells["precio_venta"].Value != null && row.Cells["cantidad"].Value != null)
+                        {
+                            if (decimal.TryParse(row.Cells["precio_venta"].Value.ToString(), out decimal precioVenta) &&
+                                int.TryParse(row.Cells["cantidad"].Value.ToString(), out int cantidad))
+                            {
+                                total += precioVenta * cantidad;
+                            }
+                            else
+                            {
+                                // Manejar el caso en que los valores no se puedan convertir
+                                MessageBox.Show("Error de formato en las celdas de precio_venta o cantidad.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+                    }
+                }
+
+                // Resta el descuento al total después de calcular el total de los productos
+                total -= cantidadDescuento;
+
+                txtTotalPagar.Text = total.ToString("0.00");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al calcular el total: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
@@ -324,5 +391,8 @@ namespace General.GUI.DETALLE_VENTA
             CLIENTES.frmEditarCliente f = new CLIENTES.frmEditarCliente();
             f.ShowDialog();
         }
+
+        
+
     }
 }
